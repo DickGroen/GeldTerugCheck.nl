@@ -425,6 +425,46 @@ export default {
         return jsonResponse({ ok: false, error: err.message }, 500);
       }
     }
+    // SUBMIT (betaalde analyse)
+    if (request.method === "POST" && url.pathname === "/submit") {
+      try {
+        const formData = await request.formData();
+        const file = formData.get("file");
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const stripeLink = env.STRIPE_LINK || "https://geldterugcheck.nl";
+
+        const validationError = validateUploadInput({ file, name, email });
+        if (validationError) return jsonResponse({ ok: false, error: validationError }, 400);
+
+        const { base64, mediaType } = await fileToBase64(file);
+        const result = await handleSonnet(env, base64, mediaType);
+
+        const kvKey = `sonnet:${Date.now()}:${email}`;
+        await env.GTC_QUEUE.put(kvKey, JSON.stringify({
+          type: "sonnet",
+          name,
+          email,
+          ...result,
+          stripe_link: stripeLink,
+          created_at: new Date().toISOString()
+        }));
+
+        await sendAdminSonnet(env, { name, email, result, stripeLink });
+
+        return jsonResponse({
+          ok: true,
+          message: "Je uitgebreide analyse wordt verwerkt en zo snel mogelijk verzonden."
+        });
+      } catch (err) {
+        return jsonResponse({ ok: false, error: err.message }, 500);
+      }
+    }
+
+    // fallback
+    return jsonResponse({ ok: false, error: "Endpoint niet gevonden" }, 404);
+  }
+};
 
     //
     
