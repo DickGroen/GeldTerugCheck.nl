@@ -1,0 +1,10 @@
+name = "geldterugcheck"
+main = "index.js"
+compatibility_date = "2024-11-01"
+
+[vars]
+STRIPE_LINK = "https://geldterugcheck.nl/betaal"
+
+[[kv_namespaces]]
+binding = "GTC_QUEUE"
+id = "KV-ID-HIER"
