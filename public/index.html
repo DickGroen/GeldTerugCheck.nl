@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>GeldTerugCheck.nl – Gratis AI‑check voor jouw terugbetaling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: Arial; margin: 0; padding: 0; background: #f7f7f7; }
+    .hero { padding: 60px 20px; text-align: center; background: white; }
+    .hero h1 { font-size: 34px; margin-bottom: 10px; }
+    .hero p { font-size: 18px; color: #444; }
+    .form { max-width: 480px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; }
+    input, textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+    button { width: 100%; padding: 14px; background: black; color: white; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; }
+  </style>
+</head>
+
+<body>
+
+<div class="hero">
+  <h1>GeldTerugCheck.nl</h1>
+  <p>Onze AI berekent binnen 20 seconden of jij recht hebt op geld terug.  
+     Vlucht vertraagd, pakket kapot, verkeerde factuur of abonnementskosten?</p>
+</div>
+
+<div class="form">
+  <form action="/api/check" method="POST">
+    <label>Wat is er gebeurd?</label>
+    <textarea name="beschrijving" required></textarea>
+
+    <label>Bedrag (optioneel)</label>
+    <input type="number" name="bedrag" />
+
+    <label>Datum van het incident</label>
+    <input type="date" name="datum" required />
+
+    <label>Upload bewijs (URL of tekst)</label>
+    <input type="text" name="bewijs" />
+
+    <button type="submit">Start gratis check</button>
+  </form>
+</div>
+
+</body>
+</html>
 
