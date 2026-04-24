@@ -2,45 +2,440 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>GeldTerugCheck.nl – Gratis AI‑check voor jouw terugbetaling</title>
+  <title>GeldTerugCheck.nl – Check gratis of jij geld terug kunt krijgen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: Arial; margin: 0; padding: 0; background: #f7f7f7; }
-    .hero { padding: 60px 20px; text-align: center; background: white; }
-    .hero h1 { font-size: 34px; margin-bottom: 10px; }
-    .hero p { font-size: 18px; color: #444; }
-    .form { max-width: 480px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; }
-    input, textarea { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
-    button { width: 100%; padding: 14px; background: black; color: white; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; }
+    :root {
+      --primary: #1a73e8;
+      --accent: #0f9d58;
+      --bg-light: #f8f8f8;
+      --text-dark: #1a1a1a;
+      --text-light: #666666;
+      --border: #e0e0e0;
+      --radius: 8px;
+      --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .section {
+      padding: 72px 16px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .heading-xl {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .heading-l {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .heading-m {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .text-m {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .button-primary {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .button-primary:hover {
+      background: #155ec0;
+      transform: translateY(-1px);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-hero {
+      background: var(--bg-light);
+    }
+
+    .hero-sub {
+      margin-bottom: 24px;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 420px;
+      height: 260px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 24px;
+      margin: 0 auto;
+    }
+
+    .section-benefits {
+      background: #ffffff;
+    }
+
+    .benefit-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+
+    .section-form {
+      background: var(--bg-light);
+    }
+
+    .form-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 24px 28px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .input,
+    .select,
+    .file-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .input:focus,
+    .select:focus,
+    .file-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(26, 115, 232, 0.2);
+    }
+
+    .helper {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    .section-trust {
+      background: #ffffff;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .trust-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: #e8f5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .section-how {
+      background: var(--bg-light);
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-disclaimer {
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+
+    .disclaimer-text {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .section-final-cta {
+      background: var(--bg-light);
+      text-align: center;
+    }
+
+    .section-final-cta .heading-l {
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .section {
+        padding: 56px 16px;
+      }
+      .heading-xl {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
-
 <body>
 
-<div class="hero">
-  <h1>GeldTerugCheck.nl</h1>
-  <p>Onze AI berekent binnen 20 seconden of jij recht hebt op geld terug.  
-     Vlucht vertraagd, pakket kapot, verkeerde factuur of abonnementskosten?</p>
-</div>
+  <!-- HERO -->
+  <section class="section section-hero">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <h1 class="heading-xl">Check gratis of jij geld terug kunt krijgen</h1>
+          <p class="text-m hero-sub">
+            Vlucht vertraagd, pakket kapot of onterecht betaald? Onze AI analyseert je situatie binnen 20 seconden.
+          </p>
+          <a href="#form" class="button-primary">Doe de gratis geld-terug-check</a>
+        </div>
+        <div>
+          <div class="hero-illustration">
+            Simpele uitleg, snelle analyse.<br />
+            Upload je document en ontdek direct of jij geld terug kunt krijgen.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="form">
-  <form action="/api/check" method="POST">
-    <label>Wat is er gebeurd?</label>
-    <textarea name="beschrijving" required></textarea>
+  <!-- BENEFITS -->
+  <section class="section section-benefits">
+    <div class="container">
+      <div class="grid-3">
+        <div class="card">
+          <p class="text-m">
+            <span class="benefit-icon">✓</span>
+            Binnen 20 seconden een analyse
+          </p>
+        </div>
+        <div class="card">
+          <p class="text-m">
+            <span class="benefit-icon">✓</span>
+            Geen kosten vooraf
+          </p>
+        </div>
+        <div class="card">
+          <p class="text-m">
+            <span class="benefit-icon">✓</span>
+            Wij regelen alles als je wilt
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <label>Bedrag (optioneel)</label>
-    <input type="number" name="bedrag" />
+  <!-- FORM -->
+  <section class="section section-form" id="form">
+    <div class="container">
+      <div class="form-card">
+        <h2 class="heading-l">Start je gratis geld-terug-check</h2>
+        <p class="text-m" style="margin-bottom: 16px;">
+          Vul je gegevens in, kies een categorie en upload je document. Onze AI doet de rest.
+        </p>
 
-    <label>Datum van het incident</label>
-    <input type="date" name="datum" required />
+        <form id="claim-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div>
+              <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="E-mailadres"
+                required
+              />
+              <p class="helper">We sturen je de analyse naar dit adres.</p>
+            </div>
 
-    <label>Upload bewijs (URL of tekst)</label>
-    <input type="text" name="bewijs" />
+            <div>
+              <select class="select" name="categorie" required>
+                <option value="">Waar gaat je claim over?</option>
+                <option value="vlucht">Vlucht vertraagd of geannuleerd</option>
+                <option value="pakket">Pakket kapot of niet geleverd</option>
+                <option value="abonnement">Onterechte abonnementskosten</option>
+                <option value="hotel">Slechte hotel/service ervaring</option>
+                <option value="factuur">Onjuiste factuur</option>
+              </select>
+            </div>
 
-    <button type="submit">Start gratis check</button>
-  </form>
-</div>
+            <div>
+              <input
+                class="file-input"
+                type="file"
+                name="document"
+                accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                required
+              />
+              <p class="helper">Upload een factuur, e-mail, boekingsbevestiging of foto.</p>
+            </div>
+          </div>
+
+          <button type="submit" class="button-primary">Start gratis analyse</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section section-trust">
+    <div class="container">
+      <div class="grid-3">
+        <div class="trust-item">
+          <div class="trust-badge">🔒</div>
+          <p class="text-m">Privacy: jouw documenten worden veilig verwerkt.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-badge">€</div>
+          <p class="text-m">Geen kosten vooraf – eerst inzicht, dan pas beslissen.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-badge">★</div>
+          <p class="text-m">Onze AI is getraind op veelvoorkomende consumentclaims.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section-how">
+    <div class="container">
+      <h2 class="heading-l" style="margin-bottom: 24px;">Hoe werkt de geld-terug-check?</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="step-number">1</div>
+          <h3 class="heading-m">Upload je document</h3>
+          <p class="text-m">
+            Voeg een factuur, boekingsbevestiging, e-mail of foto toe. Hoe concreter, hoe beter de analyse.
+          </p>
+        </div>
+        <div class="card">
+          <div class="step-number">2</div>
+          <h3 class="heading-m">AI analyseert je situatie</h3>
+          <p class="text-m">
+            Binnen 20 seconden krijg je een inschatting of je recht hebt op geld terug.
+          </p>
+        </div>
+        <div class="card">
+          <div class="step-number">3</div>
+          <h3 class="heading-m">Direct advies + vervolgstap</h3>
+          <p class="text-m">
+            Je ontvangt advies én de optie om een brief te laten genereren of de claim door ons te laten afhandelen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="section section-disclaimer">
+    <div class="container">
+      <p class="disclaimer-text">
+        GeldTerugCheck.nl geeft geen juridisch advies. De analyse is een geautomatiseerde inschatting op basis van jouw
+        informatie. Controleer altijd zelf of de uitkomst past bij jouw situatie.
+      </p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section section-final-cta">
+    <div class="container">
+      <h2 class="heading-l">Klaar om te checken of jij geld terug kunt krijgen?</h2>
+      <p class="text-m" style="margin-bottom: 20px;">
+        Het kost je minder dan een minuut. De analyse is gratis en vrijblijvend.
+      </p>
+      <a href="#form" class="button-primary">Start gratis analyse</a>
+    </div>
+  </section>
 
 </body>
 </html>
-
