@@ -1,10 +1,10 @@
 name = "geldterugcheck"
 main = "index.js"
-compatibility_date = "2024-11-01"
-
-[vars]
-STRIPE_LINK = "https://geldterugcheck.nl/betaal"
+compatibility_date = "2024-12-01"
 
 [[kv_namespaces]]
-binding = "GTC_QUEUE"
-id = "KV-ID-HIER"
+binding = "VLUCHT_QUEUE"
+id = "JOUW_KV_NAMESPACE_ID"
+
+[triggers]
+crons = ["0 13 * * 1-5"]
