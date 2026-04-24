@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vlucht vertraagd of geannuleerd? Haal tot €600 terug | VluchtClaim NL</title>
+  <meta name="description" content="Upload jouw boardingpass of boekingsbevestiging en ontvang een volledige EU261-analyse plus kant-en-klare claimbrief voor uiterlijk morgen 16:00. Eenmalig €29.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container--wide">
+    <div class="site-header__inner">
+      <div class="logo">
+        <span class="logo-dot"></span>
+        VluchtClaim NL
+      </div>
+      <button class="header-cta" onclick="openModal()">Claim checken — €29</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero__eyebrow" style="justify-content:center;text-align:center;display:block;margin-left:auto;margin-right:auto;">
+      Vlucht vertraagd of geannuleerd? Jij hebt mogelijk recht op tot €600
+    </div>
+
+    <h1 style="text-align:center;">Heb jij recht op compensatie voor jouw vlucht?</h1>
+
+    <p class="hero__sub" style="text-align:center;margin-left:auto;margin-right:auto;">
+      Onder EU-verordening 261/2004 hebben luchtpassagiers bij vertraging of annulering recht op €250 tot €600.
+      Upload jouw boardingpass of boekingsbevestiging en ontvang uiterlijk morgen 16:00 een volledige analyse
+      plus kant-en-klare claimbrief per e-mail.
+    </p>
+
+    <!-- VALUE STRIP -->
+    <div class="value-strip">
+      <span class="value-item"><span class="vi-check">✔</span> Analyse + claimbrief uiterlijk morgen 16:00</span>
+      <span class="value-item"><span class="vi-check">✔</span> Per e-mail — geen account nodig</span>
+      <span class="value-item"><span class="vi-check">✔</span> Eenmalig €29 · geen abonnement</span>
+      <span class="value-item"><span class="vi-check">✔</span> Document wordt na verwerking verwijderd</span>
+    </div>
+
+    <!-- TWEE OPTIES -->
+    <div class="optie-grid">
+
+      <!-- OPTIE 1: BETAALD (primair) -->
+      <div class="optie-card optie-card--betaald">
+        <div class="optie-badge optie-badge--betaald">Aanbevolen</div>
+        <h3 class="optie-title">Volledige Analyse</h3>
+        <p class="optie-desc">Ontvang de volledige EU261-analyse met een kant-en-klare claimbrief — direct bruikbaar, uiterlijk morgen 16:00 per e-mail.</p>
+        <ul class="optie-list">
+          <li>✓ Volledige analyse van jouw claim-kansen</li>
+          <li>✓ Check op buitengewone omstandigheid-verweer</li>
+          <li>✓ Kant-en-klare claimbrief op naam</li>
+          <li>✓ Concrete vervolgstappen (ACM, rechter)</li>
+          <li>✓ Resultaat uiterlijk morgen 16:00</li>
+        </ul>
+        <div class="optie-price">€29 <span>eenmalig · geen abonnement</span></div>
+        <a href="https://buy.stripe.com/JOUW_STRIPE_LINK" class="optie-btn optie-btn--betaald">
+          Nu betalen en analyse starten →
+        </a>
+        <p class="optie-security">🔒 Veilig betalen via Stripe · iDEAL beschikbaar</p>
+        <p class="optie-guarantee">Niet tevreden? Geld terug — zonder discussie.</p>
+      </div>
+
+      <!-- OPTIE 2: GRATIS (secundair) -->
+      <div class="optie-card optie-card--gratis">
+        <div class="optie-badge optie-badge--gratis">Gratis</div>
+        <h3 class="optie-title">Eerste Inschatting</h3>
+        <p class="optie-desc">Nog niet zeker? Upload jouw document en ontvang een gratis eerste inschatting van jouw claim per e-mail.</p>
+        <ul class="optie-list">
+          <li>✓ Maatschappij en vluchttype herkend</li>
+          <li>✓ Eerste risico-inschatting</li>
+          <li>✓ Per e-mail — uiterlijk volgende werkdag voor 16:00</li>
+        </ul>
+        <div class="optie-price">Gratis</div>
+        <input type="file" id="gratis-file-input" accept=".pdf,.jpg,.jpeg,.png"
+               onchange="handleGratisFileSelect(this)" style="display:none;">
+        <label class="upload-section upload-section--small" id="gratis-upload-zone" for="gratis-file-input">
+          <div class="upload-label">Document uploaden</div>
+          <div class="upload-hint">PDF, JPG of PNG · max. 10 MB</div>
+        </label>
+        <div id="gratis-contact-fields" style="display:none;gap:8px;flex-direction:column;">
+          <input type="text" id="gratis-name" placeholder="Jouw naam" class="optie-input">
+          <input type="email" id="gratis-email" placeholder="Jouw e-mailadres" class="optie-input">
+        </div>
+        <button class="optie-btn optie-btn--gratis" id="gratis-btn" onclick="startGratisUpload()" disabled>
+          Gratis inschatting aanvragen
+        </button>
+        <div class="optie-status" id="gratis-status"></div>
+      </div>
+
+    </div>
+
+    <!-- UPLOAD (verborgen, voor teaser flow) -->
+    <input type="file" id="file-input" accept=".pdf,.jpg,.jpeg,.png"
+           onchange="handleFile(this)" style="display:none;">
+    <label class="upload-section" id="upload-zone" for="file-input" style="display:none;">
+      <div class="upload-label">Document uploaden</div>
+      <div class="upload-hint">PDF, JPG of PNG</div>
+    </label>
+
+    <!-- TEASER -->
+    <div class="teaser" id="teaser">
+      <div class="teaser__header">
+        <div>
+          <div style="font-size:0.72rem;color:#9CA3AF;margin-bottom:4px;letter-spacing:0.05em;text-transform:uppercase;">Herkend</div>
+          <div class="teaser__company" id="teaser-company">Jouw vlucht is klaar voor analyse</div>
+        </div>
+        <div class="teaser__status-label">Klaar</div>
+      </div>
+      <div class="teaser__body">
+        <div class="teaser__found" id="teaser-found">Goed. Dit gebeurt nu:</div>
+        <div class="teaser__sub" id="teaser-sub">Jouw vluchtdocument is herkend. Klik hieronder om jouw analyse aan te vragen — resultaat uiterlijk morgen 16:00.</div>
+        <div class="teaser__locked">
+          <div class="lock-icon">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="teaser__locked-text" id="teaser-locked-text">
+            <strong>Volledige analyse na betaling</strong>
+            Claim-kansen, inschatting en kant-en-klare claimbrief — uiterlijk morgen 16:00 per e-mail.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <button class="cta-main" onclick="openModal()">
+        Claim checken — €29 · Resultaat uiterlijk morgen 16:00
+      </button>
+      <div class="cta-sub">Eenmalige betaling · geen abonnement · 🔒 Veilig betalen via Stripe · iDEAL</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Zo werkt het</div>
+    <h2>In 3 stappen geregeld</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step__num">01</div>
+        <div class="step__title">Betalen en uploaden</div>
+        <div class="step__desc">Na betaling upload je jouw boardingpass, boekingsbevestiging of brief van de luchtvaartmaatschappij. Duurt minder dan 2 minuten.</div>
+      </div>
+      <div class="step">
+        <div class="step__num">02</div>
+        <div class="step__title">Wij analyseren</div>
+        <div class="step__desc">We controleren jouw vlucht op vertraging, annulering, instapweigering, buitengewone omstandigheid-verweer en het juiste compensatiebedrag op basis van EU261/2004.</div>
+      </div>
+      <div class="step">
+        <div class="step__num">03</div>
+        <div class="step__title">Resultaat per e-mail</div>
+        <div class="step__desc">Uiterlijk morgen 16:00 ontvang je jouw analyse én een kant-en-klare claimbrief per e-mail. Direct sturen naar de luchtvaartmaatschappij.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF / NUMBERS -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-label">Waarom VluchtClaim NL</div>
+    <h2>Jouw rechten kennen, hoeft niet duur te zijn</h2>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-num">€600</div>
+        <div class="proof-label">Max. compensatie per persoon op vluchten buiten de EU</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">3 uur</div>
+        <div class="proof-label">Aankomstvertraging waarbij EU261 van toepassing kan zijn</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">€29</div>
+        <div class="proof-label">Eenmalig, terwijl claimbureaus 25–35% van jouw compensatie innen</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-num">24u</div>
+        <div class="proof-label">Analyse + claimbrief in jouw inbox</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Veelgestelde vragen</div>
+    <h2>Alles wat je wil weten</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Voor welke vluchten geldt EU261/2004?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">EU261/2004 geldt voor alle vluchten die vertrekken vanuit een EU-luchthaven (ongeacht de maatschappij), én voor vluchten die aankomen in de EU met een Europese luchtvaartmaatschappij. Ook vluchten vanuit Noorwegen, IJsland en Zwitserland vallen onder de verordening.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Hoeveel compensatie heb ik recht op?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Het bedrag hangt af van de vliegafstand: €250 voor vluchten tot 1.500 km, €400 voor vluchten tussen 1.500 en 3.500 km (en EU-vluchten boven 3.500 km), en €600 voor vluchten buiten de EU boven 3.500 km. De bedragen gelden per persoon.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Wat als de maatschappij buitengewone omstandigheden aanvoert?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Luchtvaartmaatschappijen proberen claims regelmatig af te wijzen met een beroep op buitengewone omstandigheid (overmacht), zoals slecht weer of stakingen. Onze analyse beoordeelt of dit verweer stand houdt. Technische problemen en personeelstekort zijn doorgaans geen buitengewone omstandigheid.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Hoe werkt het uploaden en betalen?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Na betaling upload je jouw document direct op de bevestigingspagina. Dat duurt minder dan 2 minuten. Jouw analyse en claimbrief ontvang je uiterlijk de volgende werkdag voor 16:00 per e-mail.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Wat als mijn claim niet kansrijk blijkt?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Je ontvangt altijd een volledig rapport met een heldere uitleg van de situatie, de redenen waarom de claim mogelijk niet kansrijk is, en concrete vervolgstappen als alternatief. Je betaalt nooit voor een leeg rapport.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Is dit juridisch advies?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Nee. Dit is een informatieve analyse op basis van jouw vluchtdocument. Wij geven geen juridisch advies. Bij complexe situaties of hoge bedragen raden wij aan een jurist of de Consumentenbond te raadplegen.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Wat gebeurt er met mijn document?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Jouw document wordt na de analyse direct en permanent verwijderd. Wij slaan geen persoonlijke gegevens op langer dan noodzakelijk voor de verwerking.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Waarom €29 betalen als claimbureaus gratis werken?
+          <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Claimbureaus zijn alleen "gratis" als je slaagt — en rekenen dan 25 tot 35% van jouw compensatie. Op een claim van €600 betaal je dan tot €210. Voor €29 heb jij de volledige analyse én claimbrief in handen en stuur je zelf — je houdt de volledige compensatie.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<footer class="disclaimer">
+  <div class="container">
+    <p>VluchtClaim NL biedt informatieve analyses en stelt conceptbrieven op op basis van EU-verordening 261/2004. Wij verlenen geen juridisch advies. Een claimbrief garandeert geen succesvolle compensatie. Bij afwijzing kunnen verdere stappen noodzakelijk zijn. Raadpleeg bij twijfel een jurist of de Consumentenbond. Documenten worden na verwerking verwijderd. &copy; 2025 VluchtClaim NL.</p>
+  </div>
+</footer>
+
+<!-- STICKY FOOTER -->
+<div class="sticky-footer" id="sticky-footer">
+  <div>
+    <div class="sticky-footer__text">Vlucht vertraagd of geannuleerd?</div>
+    <div class="sticky-footer__sub">Resultaat uiterlijk morgen 16:00 · eenmalig €29</div>
+  </div>
+  <button class="sticky-cta" onclick="openModal()">Claim checken — €29 →</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal__header">
+      <div class="modal__eyebrow">Wat je ontvangt</div>
+      <div class="modal__title">Analyse + claimbrief uiterlijk morgen 16:00</div>
+      <div class="modal__sub">Na betaling upload je jouw document. Wij analyseren en sturen jou het resultaat uiterlijk morgen 16:00 per e-mail.</div>
+      <div class="modal__price">€29 <span style="font-size:1rem;color:#9CA3AF;font-weight:400;">eenmalig · geen abonnement</span></div>
+    </div>
+    <div class="modal__body">
+      <div class="modal__feature">
+        <div class="check">✓</div>
+        <div>Volledige EU261-analyse van jouw claim-kansen</div>
+      </div>
+      <div class="modal__feature">
+        <div class="check">✓</div>
+        <div>Check op buitengewone omstandigheid-verweer en onrechtmatige afwijzingen</div>
+      </div>
+      <div class="modal__feature">
+        <div class="check">✓</div>
+        <div>Kant-en-klare claimbrief — direct sturen naar de maatschappij</div>
+      </div>
+      <div class="modal__feature">
+        <div class="check">✓</div>
+        <div>Resultaat uiterlijk morgen 16:00</div>
+      </div>
+      <div class="modal__disclaimer">
+        ℹ️ Dit is een informatieve analyse, geen juridisch advies. Een claimbrief garandeert geen directe uitbetaling.
+      </div>
+      <p id="modal-dynamic-copy" style="margin-bottom:16px;color:#6b7a90;font-size:0.9rem;">
+        Wij hebben al eerste aanwijzingen herkend. De volledige beoordeling volgt na betaling.
+      </p>
+      <a href="https://buy.stripe.com/JOUW_STRIPE_LINK" class="modal__cta">
+        €29 betalen en analyse ontvangen →
+      </a>
+      <div class="modal__security">🔒 Veilig betalen via Stripe · iDEAL beschikbaar</div>
+      <div class="modal__close" onclick="closeModal()">Annuleren</div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<script>
+const WORKER_URL = 'https://vluchtclaimnl.workers.dev';
+let gratisFile = null;
+
+function handleGratisFileSelect(input) {
+  if (!input.files || !input.files[0]) return;
+  gratisFile = input.files[0];
+  const zone = document.getElementById('gratis-upload-zone');
+  zone.innerHTML = `<div class="upload-label" style="color:var(--green);">✓ ${escapeHtmlLocal(gratisFile.name)}</div><div class="upload-hint">Bestand geselecteerd</div>`;
+  const contactFields = document.getElementById('gratis-contact-fields');
+  contactFields.style.display = 'flex';
+  checkGratisReady();
+}
+
+function escapeHtmlLocal(str) {
+  return String(str || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+}
+
+function checkGratisReady() {
+  const name = document.getElementById('gratis-name').value.trim();
+  const email = document.getElementById('gratis-email').value.trim();
+  const btn = document.getElementById('gratis-btn');
+  btn.disabled = !(name && email && email.includes('@') && gratisFile);
+}
+
+document.getElementById('gratis-name').addEventListener('input', checkGratisReady);
+document.getElementById('gratis-email').addEventListener('input', checkGratisReady);
+
+async function startGratisUpload() {
+  const name = document.getElementById('gratis-name').value.trim();
+  const email = document.getElementById('gratis-email').value.trim();
+  const btn = document.getElementById('gratis-btn');
+  const status = document.getElementById('gratis-status');
+
+  if (!gratisFile) return;
+
+  btn.disabled = true;
+  btn.textContent = 'Wordt verstuurd...';
+  status.className = 'optie-status optie-status--info';
+  status.textContent = 'Jouw document wordt geanalyseerd...';
+
+  const formData = new FormData();
+  formData.append('file', gratisFile);
+  formData.append('name', name);
+  formData.append('email', email);
+
+  try {
+    const res = await fetch(`${WORKER_URL}/analyze-free`, { method: 'POST', body: formData });
+    const data = await res.json();
+    if (data.ok) {
+      status.className = 'optie-status optie-status--success';
+      status.textContent = '✓ Je ontvangt jouw inschatting uiterlijk de volgende werkdag voor 16:00 per e-mail.';
+      btn.textContent = 'Verstuurd ✓';
+    } else {
+      throw new Error(data.error || 'Fout');
+    }
+  } catch (err) {
+    status.className = 'optie-status optie-status--error';
+    status.textContent = 'Fout: ' + err.message;
+    btn.disabled = false;
+    btn.textContent = 'Gratis inschatting aanvragen';
+  }
+}
+</script>
+
+</body>
+</html>
