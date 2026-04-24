@@ -182,15 +182,14 @@
       <div class="fallback-box">
         <strong>Upload lukt niet?</strong>
         <p>Stuur jouw document direct per e-mail naar ons — we verwerken het even snel. Vermeld jouw naam, e-mailadres en of je de €29 of €49 optie hebt gekozen.</p>
-        <a href="mailto:info@vluchtclaimnl.nl" class="fallback-email">info@vluchtclaimnl.nl</a>
+        <a href="mailto:info@geldterugcheck.nl.nl" class="fallback-email">info@geldterugcheck.nl.nl</a>
       </div>
 
     </div>
   </div>
 
   <script>
-    const BASE_URL = 'https://vluchtclaimnl.workers.dev';
-
+    const BASE_URL =  'https://geldterugcheck.nl/api/submit';
     const lockedScreen = document.getElementById('locked-screen');
     const thankyouApp = document.getElementById('thankyou-app');
     const uploadPanel = document.getElementById('upload-panel');
@@ -367,12 +366,12 @@
             </div>
           `;
         } else {
-          showStatus('Upload mislukt: ' + (data.error || 'Onbekende fout') + '. Probeer het opnieuw of stuur jouw document naar info@vluchtclaimnl.nl.', 'error');
+          showStatus('Upload mislukt: ' + (data.error || 'Onbekende fout') + '. Probeer het opnieuw of stuur jouw document naar info@geldterugcheck.nl.', 'error');
           submitBtn.disabled = false;
           submitBtn.textContent = currentTier === 'managed' ? 'Nu uploaden — wij regelen de rest' : 'Nu uploaden en analyse starten';
         }
       } catch (err) {
-        showStatus('Technische fout. Probeer het opnieuw of stuur jouw document naar info@vluchtclaimnl.nl.', 'error');
+        showStatus('Technische fout. Probeer het opnieuw of stuur jouw document naar info@geldterugcheck.nl.', 'error');
         submitBtn.disabled = false;
         submitBtn.textContent = currentTier === 'managed' ? 'Nu uploaden — wij regelen de rest' : 'Nu uploaden en analyse starten';
       }
