@@ -4,7 +4,8 @@ compatibility_date = "2024-12-01"
 
 [[kv_namespaces]]
 binding = "VLUCHT_QUEUE"
-id = "JOUW_KV_NAMESPACE_ID"
+id = "
+VLUCHT_QUEUE"
 
 [triggers]
 crons = ["0 13 * * 1-5"]
