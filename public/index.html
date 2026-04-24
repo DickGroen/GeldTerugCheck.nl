@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>GeldTerugCheck.nl – Check gratis of jij geld terug kunt krijgen</title>
+  <title>GeldTerugCheck.nl – Check gratis of u geld terug kunt krijgen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -10,10 +10,10 @@
       --accent: #0f9d58;
       --bg-light: #f8f8f8;
       --text-dark: #1a1a1a;
-      --text-light: #666666;
+      --text-light: #666;
       --border: #e0e0e0;
       --radius: 8px;
-      --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.06);
     }
 
     * {
@@ -47,11 +47,6 @@
     .heading-l {
       font-size: 1.8rem;
       margin-bottom: 16px;
-    }
-
-    .heading-m {
-      font-size: 1.2rem;
-      margin-bottom: 8px;
     }
 
     .text-m {
@@ -105,10 +100,6 @@
       background: var(--bg-light);
     }
 
-    .hero-sub {
-      margin-bottom: 24px;
-    }
-
     .hero-illustration {
       width: 100%;
       max-width: 420px;
@@ -124,27 +115,6 @@
       text-align: center;
       padding: 24px;
       margin: 0 auto;
-    }
-
-    .section-benefits {
-      background: #ffffff;
-    }
-
-    .benefit-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      background: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-size: 14px;
-      margin-right: 8px;
-    }
-
-    .section-form {
-      background: var(--bg-light);
     }
 
     .form-card {
@@ -186,11 +156,8 @@
     .helper {
       font-size: 0.85rem;
       color: var(--text-light);
-      margin-top: 4px;
-    }
-
-    .section-trust {
-      background: #ffffff;
+      margin-top: -8px;
+      margin-bottom: 16px;
     }
 
     .trust-item {
@@ -212,10 +179,6 @@
       flex-shrink: 0;
     }
 
-    .section-how {
-      background: var(--bg-light);
-    }
-
     .step-number {
       width: 28px;
       height: 28px;
@@ -229,25 +192,9 @@
       margin-bottom: 8px;
     }
 
-    .section-disclaimer {
-      background: #ffffff;
-      border-top: 1px solid var(--border);
-      padding-top: 32px;
-      padding-bottom: 32px;
-    }
-
     .disclaimer-text {
       font-size: 0.85rem;
       color: var(--text-light);
-    }
-
-    .section-final-cta {
-      background: var(--bg-light);
-      text-align: center;
-    }
-
-    .section-final-cta .heading-l {
-      margin-bottom: 16px;
     }
 
     @media (max-width: 900px) {
@@ -273,16 +220,15 @@
     <div class="container">
       <div class="grid-2">
         <div>
-          <h1 class="heading-xl">Check gratis of jij geld terug kunt krijgen</h1>
-          <p class="text-m hero-sub">
-            Vlucht vertraagd, pakket kapot of onterecht betaald? Onze AI analyseert je situatie binnen 20 seconden.
+          <h1 class="heading-xl">Check gratis of u geld terug kunt krijgen</h1>
+          <p class="text-m" style="margin-bottom: 24px;">
+            Vlucht vertraagd, pakket kapot of onterecht betaald? Wij beoordelen uw situatie zorgvuldig en persoonlijk.
           </p>
-          <a href="#form" class="button-primary">Doe de gratis geld-terug-check</a>
+          <a href="#form" class="button-primary">Start gratis geld-terug-check</a>
         </div>
         <div>
           <div class="hero-illustration">
-            Simpele uitleg, snelle analyse.<br />
-            Upload je document en ontdek direct of jij geld terug kunt krijgen.
+            Upload uw document en ontvang binnen 4 uur tijdens kantooruren een persoonlijke beoordeling.
           </div>
         </div>
       </div>
@@ -290,56 +236,42 @@
   </section>
 
   <!-- BENEFITS -->
-  <section class="section section-benefits">
+  <section class="section">
     <div class="container">
       <div class="grid-3">
         <div class="card">
-          <p class="text-m">
-            <span class="benefit-icon">✓</span>
-            Binnen 20 seconden een analyse
-          </p>
+          <p class="text-m"><strong>✔</strong> Persoonlijke beoordeling</p>
         </div>
         <div class="card">
-          <p class="text-m">
-            <span class="benefit-icon">✓</span>
-            Geen kosten vooraf
-          </p>
+          <p class="text-m"><strong>✔</strong> Geen kosten vooraf</p>
         </div>
         <div class="card">
-          <p class="text-m">
-            <span class="benefit-icon">✓</span>
-            Wij regelen alles als je wilt
-          </p>
+          <p class="text-m"><strong>✔</strong> Binnen 4 uur tijdens kantooruren reactie</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FORM -->
-  <section class="section section-form" id="form">
+  <section class="section" id="form">
     <div class="container">
       <div class="form-card">
-        <h2 class="heading-l">Start je gratis geld-terug-check</h2>
+        <h2 class="heading-l">Start uw gratis geld-terug-check</h2>
         <p class="text-m" style="margin-bottom: 16px;">
-          Vul je gegevens in, kies een categorie en upload je document. Onze AI doet de rest.
+          Vul uw gegevens in, kies een categorie en upload uw document. Wij gaan direct voor u aan de slag.
         </p>
 
         <form id="claim-form" enctype="multipart/form-data">
           <div class="form-row">
+
             <div>
-              <input
-                class="input"
-                type="email"
-                name="email"
-                placeholder="E-mailadres"
-                required
-              />
-              <p class="helper">We sturen je de analyse naar dit adres.</p>
+              <input class="input" type="email" name="email" placeholder="E-mailadres" required />
+              <p class="helper">Wij sturen uw beoordeling naar dit adres.</p>
             </div>
 
             <div>
               <select class="select" name="categorie" required>
-                <option value="">Waar gaat je claim over?</option>
+                <option value="">Waar gaat uw claim over?</option>
                 <option value="vlucht">Vlucht vertraagd of geannuleerd</option>
                 <option value="pakket">Pakket kapot of niet geleverd</option>
                 <option value="abonnement">Onterechte abonnementskosten</option>
@@ -349,15 +281,10 @@
             </div>
 
             <div>
-              <input
-                class="file-input"
-                type="file"
-                name="document"
-                accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
-                required
-              />
+              <input class="file-input" type="file" name="document" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required />
               <p class="helper">Upload een factuur, e-mail, boekingsbevestiging of foto.</p>
             </div>
+
           </div>
 
           <button type="submit" class="button-primary">Start gratis analyse</button>
@@ -366,13 +293,57 @@
     </div>
   </section>
 
+  <!-- OPTIONS AFTER ANALYSIS -->
+<section class="section" style="background: #ffffff;">
+  <div class="container">
+    <h2 class="heading-l" style="margin-bottom: 24px;">Wat gebeurt er na uw aanvraag?</h2>
+
+    <p class="text-m" style="margin-bottom: 32px;">
+      Zodra u uw document heeft geüpload, ontvangt u binnen 4 uur tijdens kantooruren een persoonlijke beoordeling.
+      Daarna kunt u kiezen uit twee mogelijkheden:
+    </p>
+
+    <div class="grid-2">
+
+      <!-- GRATIS OPTIE -->
+      <div class="card">
+        <h3 class="heading-m">Optie 1 — Gratis</h3>
+        <p class="text-m" style="margin-bottom: 16px;">
+          U ontvangt een duidelijke beoordeling en een voorbeeldbrief waarmee u zelf uw claim kunt indienen.
+        </p>
+        <p class="text-m" style="margin-bottom: 16px;">
+          Ideaal als u het zelf wilt regelen en alleen een goede basis nodig heeft.
+        </p>
+        <a href="#form" class="button-primary" style="background: #0f9d58;">Gratis voorbeeldbrief</a>
+      </div>
+
+      <!-- BETAALDE OPTIE -->
+      <div class="card">
+        <h3 class="heading-m">Optie 2 — Wij regelen alles</h3>
+        <p class="text-m" style="margin-bottom: 16px;">
+          Tegen een kleine vergoeding verzorgen wij de volledige vervolgstap voor u.
+        </p>
+        <p class="text-m" style="margin-bottom: 16px;">
+          U ontvangt een uitgebreide beoordeling én een volledig opgesteld bezwaarschrift dat direct gebruikt kan worden.
+        </p>
+        <p class="text-m" style="margin-bottom: 16px;">
+          U hoeft zelf niets meer te doen — wij nemen het hele proces uit handen.
+        </p>
+        <a href="#form" class="button-primary">Laat ons het regelen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
   <!-- TRUST -->
-  <section class="section section-trust">
+  <section class="section">
     <div class="container">
       <div class="grid-3">
         <div class="trust-item">
           <div class="trust-badge">🔒</div>
-          <p class="text-m">Privacy: jouw documenten worden veilig verwerkt.</p>
+          <p class="text-m">Uw documenten worden veilig en vertrouwelijk behandeld.</p>
         </div>
         <div class="trust-item">
           <div class="trust-badge">€</div>
@@ -380,60 +351,42 @@
         </div>
         <div class="trust-item">
           <div class="trust-badge">★</div>
-          <p class="text-m">Onze AI is getraind op veelvoorkomende consumentclaims.</p>
+          <p class="text-m">Heldere beoordeling en duidelijke vervolgstappen.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section section-how">
+  <section class="section" style="background: var(--bg-light);">
     <div class="container">
-      <h2 class="heading-l" style="margin-bottom: 24px;">Hoe werkt de geld-terug-check?</h2>
+      <h2 class="heading-l" style="margin-bottom: 24px;">Hoe werkt het?</h2>
       <div class="grid-3">
         <div class="card">
           <div class="step-number">1</div>
-          <h3 class="heading-m">Upload je document</h3>
-          <p class="text-m">
-            Voeg een factuur, boekingsbevestiging, e-mail of foto toe. Hoe concreter, hoe beter de analyse.
-          </p>
+          <h3 class="heading-m">Upload uw document</h3>
+          <p class="text-m">Factuur, boekingsbevestiging, e-mail of foto.</p>
         </div>
         <div class="card">
           <div class="step-number">2</div>
-          <h3 class="heading-m">AI analyseert je situatie</h3>
-          <p class="text-m">
-            Binnen 20 seconden krijg je een inschatting of je recht hebt op geld terug.
-          </p>
+          <h3 class="heading-m">Wij beoordelen uw situatie</h3>
+          <p class="text-m">Binnen 4 uur tijdens kantooruren ontvangt u een persoonlijke analyse.</p>
         </div>
         <div class="card">
           <div class="step-number">3</div>
-          <h3 class="heading-m">Direct advies + vervolgstap</h3>
-          <p class="text-m">
-            Je ontvangt advies én de optie om een brief te laten genereren of de claim door ons te laten afhandelen.
-          </p>
+          <h3 class="heading-m">Duidelijke vervolgstap</h3>
+          <p class="text-m">U ontvangt advies en indien gewenst verzorgen wij het volledige bezwaarschrift.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- DISCLAIMER -->
-  <section class="section section-disclaimer">
+  <section class="section">
     <div class="container">
       <p class="disclaimer-text">
-        GeldTerugCheck.nl geeft geen juridisch advies. De analyse is een geautomatiseerde inschatting op basis van jouw
-        informatie. Controleer altijd zelf of de uitkomst past bij jouw situatie.
+        GeldTerugCheck.nl geeft geen juridisch advies. De beoordeling is een persoonlijke inschatting op basis van uw informatie.
       </p>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="section section-final-cta">
-    <div class="container">
-      <h2 class="heading-l">Klaar om te checken of jij geld terug kunt krijgen?</h2>
-      <p class="text-m" style="margin-bottom: 20px;">
-        Het kost je minder dan een minuut. De analyse is gratis en vrijblijvend.
-      </p>
-      <a href="#form" class="button-primary">Start gratis analyse</a>
     </div>
   </section>
 
