@@ -6,31 +6,12 @@
   <title>Betaling geslaagd — Document uploaden | VluchtClaim NL</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .thankyou-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 56px 24px 140px;
-    }
-    .thankyou-card {
-      background: var(--white);
-      border: 1.5px solid var(--line);
-      border-radius: 16px;
-      padding: 36px 28px;
-      box-shadow: 0 10px 24px rgba(17,24,39,0.06);
-    }
-    .thankyou-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green-soft);
-      color: var(--green);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      margin-bottom: 18px;
-    }
+    .thankyou-wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 140px; }
+    .thankyou-card { background: var(--white); border: 1.5px solid var(--line); border-radius: 16px; padding: 36px 28px; box-shadow: 0 10px 24px rgba(17,24,39,0.06); }
+    .thankyou-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--green-soft); color: var(--green); border-radius: 100px; padding: 6px 14px; font-size: 0.78rem; font-weight: 700; margin-bottom: 18px; }
     .thankyou-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+    .tier-banner { display: flex; align-items: center; gap: 10px; background: #0f1f3d; color: #93c5fd; border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 0.88rem; font-weight: 600; }
+    .tier-banner--standard { background: var(--accent-soft); color: var(--accent); }
     .progress-bar { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--muted); margin-bottom: 18px; }
     .progress-bar__step { display: inline-flex; align-items: center; gap: 6px; }
     .progress-bar__step--done { color: var(--green); font-weight: 700; }
@@ -40,18 +21,19 @@
     .thankyou-sub { font-size: 1rem; color: var(--ink-3); line-height: 1.75; margin-bottom: 28px; max-width: 620px; }
     .thankyou-sub strong { color: var(--ink); background: var(--amber-soft); padding: 2px 6px; border-radius: 4px; }
     .thankyou-steps { display: grid; gap: 14px; margin-bottom: 30px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 8px; }
-    .thankyou-step { display: flex; align-items: flex-start; gap: 12px; }
+    .thankyou-step { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
     .thankyou-step-num { width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; }
     .thankyou-step-title { font-weight: 700; color: var(--ink); font-size: 0.95rem; margin-bottom: 2px; }
     .thankyou-step-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.7; }
     .form-grid { display: grid; gap: 16px; margin-bottom: 18px; }
     .field { text-align: left; }
     .field label { display: block; font-size: 0.84rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-    .field input { width: 100%; border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 15px; font-size: 0.95rem; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s; }
+    .field input { width: 100%; border: 1.5px solid var(--line); border-radius: 10px; padding: 14px 15px; font-size: 0.95rem; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s; box-sizing: border-box; }
     .field input:focus { border-color: var(--accent-2); box-shadow: 0 0 0 4px rgba(46,95,172,0.08); }
     .field input.invalid { border-color: var(--red); }
     .field-error { display: none; color: var(--red); font-size: 0.78rem; margin-top: 6px; font-weight: 600; }
     .field-error.show { display: block; }
+    .field-hint { font-size: 0.78rem; color: var(--muted); margin-top: 5px; }
     .upload-panel { background: var(--surface); border: 1.5px dashed var(--line); border-radius: 12px; padding: 28px 22px; text-align: center; margin-bottom: 12px; transition: border-color 0.2s, background 0.2s; cursor: pointer; display: block; }
     .upload-panel:hover, .upload-panel.drag-over { border-color: var(--accent-2); background: var(--accent-soft); }
     .upload-panel__icon { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--white); display: flex; align-items: center; justify-content: center; }
@@ -85,10 +67,7 @@
     .success-screen p { color: var(--ink-3); line-height: 1.7; max-width: 480px; margin: 0 auto 18px; }
     .success-screen__meta { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; font-size: 0.85rem; color: var(--muted); max-width: 480px; margin: 0 auto; }
     .success-screen__meta strong { color: var(--ink); }
-    @media (max-width: 600px) {
-      .thankyou-wrap { padding: 32px 16px 120px; }
-      .thankyou-card { padding: 24px 18px; }
-    }
+    @media (max-width: 600px) { .thankyou-wrap { padding: 32px 16px 120px; } .thankyou-card { padding: 24px 18px; } }
   </style>
 </head>
 <body>
@@ -107,6 +86,9 @@
         Betaling geslaagd
       </div>
 
+      <!-- Tier banner — ingevuld door JS -->
+      <div id="tier-banner" class="tier-banner" style="display:none;"></div>
+
       <div class="progress-bar">
         <span class="progress-bar__step progress-bar__step--done">✓ Betaald</span>
         <span class="progress-bar__divider"></span>
@@ -115,17 +97,17 @@
 
       <h1 class="thankyou-title">Laatste stap — upload nu jouw vluchtdocument</h1>
 
-      <p class="thankyou-sub">
+      <p class="thankyou-sub" id="thankyou-sub">
         Na de upload starten wij direct met de analyse. Je ontvangt jouw volledige EU261-analyse
         en de kant-en-klare claimbrief <strong>uiterlijk de volgende werkdag voor 16:00</strong> per e-mail.
       </p>
 
-      <div class="thankyou-steps">
+      <div class="thankyou-steps" id="thankyou-steps">
         <div class="thankyou-step">
           <div class="thankyou-step-num">1</div>
           <div>
             <div class="thankyou-step-title">Document uploaden</div>
-            <div class="thankyou-step-desc">Boardingpass, boekingsbevestiging of brief van de luchtvaartmaatschappij — PDF, JPG of PNG, zo volledig mogelijk.</div>
+            <div class="thankyou-step-desc">Boardingpass, boekingsbevestiging of brief van de maatschappij — PDF, JPG of PNG.</div>
           </div>
         </div>
         <div class="thankyou-step">
@@ -135,11 +117,11 @@
             <div class="thankyou-step-desc">We controleren op vertraging, annulering, buitengewone omstandigheid-verweer en het juiste compensatiebedrag (€250, €400 of €600).</div>
           </div>
         </div>
-        <div class="thankyou-step">
+        <div class="thankyou-step" id="step-3">
           <div class="thankyou-step-num">3</div>
           <div>
-            <div class="thankyou-step-title">Resultaat per e-mail</div>
-            <div class="thankyou-step-desc">Je ontvangt jouw volledige analyse en de kant-en-klare claimbrief <strong>uiterlijk de volgende werkdag voor 16:00</strong>.</div>
+            <div class="thankyou-step-title" id="step-3-title">Resultaat per e-mail</div>
+            <div class="thankyou-step-desc" id="step-3-desc">Je ontvangt jouw volledige analyse en de kant-en-klare claimbrief <strong>uiterlijk de volgende werkdag voor 16:00</strong>.</div>
           </div>
         </div>
       </div>
@@ -154,6 +136,12 @@
           <label for="customer-email">E-mailadres voor het resultaat</label>
           <input type="email" id="customer-email" placeholder="naam@voorbeeld.nl" autocomplete="email">
           <div class="field-error" id="email-error">Vul een geldig e-mailadres in.</div>
+        </div>
+        <!-- Alleen zichtbaar bij €49 tier -->
+        <div class="field" id="airline-email-field" style="display:none;">
+          <label for="airline-email">E-mailadres luchtvaartmaatschappij <span style="font-weight:400;color:var(--muted);">(optioneel)</span></label>
+          <input type="email" id="airline-email" placeholder="bijv. claims@klm.com" autocomplete="off">
+          <div class="field-hint">Als je dit weet, sturen wij de brief direct. Anders zoeken wij het op.</div>
         </div>
       </div>
 
@@ -185,7 +173,7 @@
         Kies eerst een bestand
       </button>
 
-      <div class="cta-sub-note">
+      <div class="cta-sub-note" id="cta-sub-note">
         Na de upload starten wij direct — resultaat uiterlijk de volgende werkdag voor 16:00 in jouw inbox.
       </div>
 
@@ -193,7 +181,7 @@
 
       <div class="fallback-box">
         <strong>Upload lukt niet?</strong>
-        <p>Stuur jouw document direct per e-mail naar ons — we verwerken het even snel. Vermeld jouw naam en het e-mailadres waarmee je hebt betaald.</p>
+        <p>Stuur jouw document direct per e-mail naar ons — we verwerken het even snel. Vermeld jouw naam, e-mailadres en of je de €29 of €49 optie hebt gekozen.</p>
         <a href="mailto:info@vluchtclaimnl.nl" class="fallback-email">info@vluchtclaimnl.nl</a>
       </div>
 
@@ -201,7 +189,7 @@
   </div>
 
   <script>
-    const SUBMIT_URL = 'https://vluchtclaimnl.workers.dev/submit';
+    const BASE_URL = 'https://vluchtclaimnl.workers.dev';
 
     const lockedScreen = document.getElementById('locked-screen');
     const thankyouApp = document.getElementById('thankyou-app');
@@ -215,10 +203,12 @@
     const statusBox = document.getElementById('status-box');
     const nameInput = document.getElementById('customer-name');
     const emailInput = document.getElementById('customer-email');
+    const airlineEmailInput = document.getElementById('airline-email');
     const nameError = document.getElementById('name-error');
     const emailError = document.getElementById('email-error');
 
     let selectedFile = null;
+    let currentTier = 'standard'; // 'standard' (€29) of 'managed' (€49)
 
     validateSession();
 
@@ -227,10 +217,48 @@
       const sessionId = params.get('session_id');
       if (sessionId && (sessionId.startsWith('cs_live_') || sessionId.startsWith('cs_test_'))) {
         thankyouApp.style.display = 'block';
+
+        // Detecteer tier op basis van URL-parameter
+        const tier = params.get('tier') || 'standard';
+        currentTier = tier;
+        applyTierUI(tier);
+
         const emailFromStripe = params.get('email');
         if (emailFromStripe) emailInput.value = emailFromStripe;
       } else {
         lockedScreen.style.display = 'block';
+      }
+    }
+
+    function applyTierUI(tier) {
+      const banner = document.getElementById('tier-banner');
+      const step3Title = document.getElementById('step-3-title');
+      const step3Desc = document.getElementById('step-3-desc');
+      const ctaNote = document.getElementById('cta-sub-note');
+      const sub = document.getElementById('thankyou-sub');
+
+      if (tier === 'managed') {
+        // €49 banner
+        banner.style.display = 'flex';
+        banner.innerHTML = '⚡ €49 — Wij sturen de claimbrief namens jou naar de luchtvaartmaatschappij';
+
+        // Stap 3 aanpassen
+        step3Title.textContent = 'Wij sturen de brief namens jou';
+        step3Desc.innerHTML = 'Nadat wij jouw analyse hebben gemaakt, sturen wij de claimbrief rechtstreeks naar de luchtvaartmaatschappij. Je ontvangt een bevestiging <strong>uiterlijk de volgende werkdag voor 16:00</strong>.';
+
+        // Airline e-mail veld tonen
+        document.getElementById('airline-email-field').style.display = 'block';
+
+        // CTA note aanpassen
+        ctaNote.textContent = 'Na de upload regelen wij de rest — uiterlijk de volgende werkdag voor 16:00.';
+
+        // Sub aanpassen
+        sub.innerHTML = 'Na de upload starten wij direct met de analyse. Wij sturen de claimbrief namens jou naar de maatschappij. Je ontvangt een bevestiging <strong>uiterlijk de volgende werkdag voor 16:00</strong> per e-mail.';
+      } else {
+        // €29 banner
+        banner.style.display = 'flex';
+        banner.className = 'tier-banner tier-banner--standard';
+        banner.innerHTML = '✓ €29 — Analyse + kant-en-klare claimbrief, jij stuurt de brief zelf';
       }
     }
 
@@ -247,16 +275,13 @@
 
     function updateSelectedFile(file) {
       if (!file) return;
-      if (file.size > 10 * 1024 * 1024) {
-        showStatus('Het bestand is te groot. Maximaal 10 MB toegestaan.', 'error');
-        return;
-      }
+      if (file.size > 10 * 1024 * 1024) { showStatus('Het bestand is te groot. Maximaal 10 MB toegestaan.', 'error'); return; }
       selectedFile = file;
       selectedFileBox.classList.add('show');
       selectedFileName.textContent = file.name;
       selectedFileMeta.textContent = formatFileSize(file.size) + ' · klaar voor upload';
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Nu uploaden en analyse starten';
+      submitBtn.textContent = currentTier === 'managed' ? 'Nu uploaden — wij regelen de rest' : 'Nu uploaden en analyse starten';
       statusBox.className = 'status-box';
     }
 
@@ -270,23 +295,18 @@
 
     removeFileBtn.addEventListener('click', e => { e.preventDefault(); clearFile(); });
     fileInput.addEventListener('change', () => { if (fileInput.files && fileInput.files[0]) updateSelectedFile(fileInput.files[0]); });
-
     uploadPanel.addEventListener('dragover', e => { e.preventDefault(); uploadPanel.classList.add('drag-over'); });
     uploadPanel.addEventListener('dragleave', () => uploadPanel.classList.remove('drag-over'));
     uploadPanel.addEventListener('drop', e => {
       e.preventDefault();
       uploadPanel.classList.remove('drag-over');
-      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        fileInput.files = e.dataTransfer.files;
-        updateSelectedFile(e.dataTransfer.files[0]);
-      }
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) { fileInput.files = e.dataTransfer.files; updateSelectedFile(e.dataTransfer.files[0]); }
     });
 
     nameInput.addEventListener('blur', () => {
       if (!nameInput.value.trim()) { nameInput.classList.add('invalid'); nameError.classList.add('show'); }
       else { nameInput.classList.remove('invalid'); nameError.classList.remove('show'); }
     });
-
     emailInput.addEventListener('blur', () => {
       const val = emailInput.value.trim();
       if (!val || !val.includes('@') || !val.includes('.')) { emailInput.classList.add('invalid'); emailError.classList.add('show'); }
@@ -298,6 +318,7 @@
     async function startUpload() {
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
+      const airlineEmail = airlineEmailInput.value.trim();
       const params = new URLSearchParams(window.location.search);
       const sessionId = params.get('session_id');
       const file = fileInput.files[0] || selectedFile;
@@ -312,39 +333,48 @@
       submitBtn.textContent = 'Upload bezig...';
       showStatus('Jouw document wordt veilig geüpload. Even geduld...', 'info');
 
+      const endpoint = currentTier === 'managed' ? '/submit-managed' : '/submit';
       const formData = new FormData();
       formData.append('file', file);
       formData.append('name', name);
       formData.append('email', email);
       formData.append('session_id', sessionId || '');
+      if (currentTier === 'managed' && airlineEmail) {
+        formData.append('airline_email', airlineEmail);
+      }
 
       try {
-        const res = await fetch(SUBMIT_URL, { method: 'POST', body: formData });
+        const res = await fetch(BASE_URL + endpoint, { method: 'POST', body: formData });
         const data = await res.json();
 
         if (data.ok) {
+          const isManagedTier = currentTier === 'managed';
           document.querySelector('.thankyou-card').innerHTML = `
             <div class="success-screen">
               <div class="success-screen__icon">✓</div>
               <h2>Upload geslaagd!</h2>
-              <p>Jouw document is veilig bij ons aangekomen. We starten nu met de analyse.</p>
+              <p>${isManagedTier
+                ? 'Jouw document is veilig bij ons aangekomen. Wij starten nu met de analyse en sturen de claimbrief namens jou naar de luchtvaartmaatschappij.'
+                : 'Jouw document is veilig bij ons aangekomen. Wij starten nu met de analyse.'
+              }</p>
               <div class="success-screen__meta">
-                Je ontvangt jouw volledige EU261-analyse en de kant-en-klare claimbrief
-                <strong>uiterlijk de volgende werkdag voor 16:00</strong> op <strong>${email}</strong>.
-                <br><br>
-                Controleer ook jouw spammap.
+                ${isManagedTier
+                  ? `Je ontvangt een bevestiging zodra wij de claimbrief hebben verstuurd — <strong>uiterlijk de volgende werkdag voor 16:00</strong> op <strong>${email}</strong>.`
+                  : `Je ontvangt jouw volledige analyse en de kant-en-klare claimbrief <strong>uiterlijk de volgende werkdag voor 16:00</strong> op <strong>${email}</strong>.`
+                }
+                <br><br>Controleer ook jouw spammap.
               </div>
             </div>
           `;
         } else {
-          showStatus('Upload mislukt: ' + (data.error || 'Onbekende fout') + '. Probeer het opnieuw of stuur jouw document per e-mail naar info@vluchtclaimnl.nl.', 'error');
+          showStatus('Upload mislukt: ' + (data.error || 'Onbekende fout') + '. Probeer het opnieuw of stuur jouw document naar info@vluchtclaimnl.nl.', 'error');
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Nu uploaden en analyse starten';
+          submitBtn.textContent = currentTier === 'managed' ? 'Nu uploaden — wij regelen de rest' : 'Nu uploaden en analyse starten';
         }
       } catch (err) {
-        showStatus('Technische fout bij de upload. Probeer het opnieuw of stuur jouw document per e-mail naar info@vluchtclaimnl.nl.', 'error');
+        showStatus('Technische fout. Probeer het opnieuw of stuur jouw document naar info@vluchtclaimnl.nl.', 'error');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Nu uploaden en analyse starten';
+        submitBtn.textContent = currentTier === 'managed' ? 'Nu uploaden — wij regelen de rest' : 'Nu uploaden en analyse starten';
       }
     }
   </script>
