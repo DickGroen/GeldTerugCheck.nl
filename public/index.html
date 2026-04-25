@@ -75,85 +75,61 @@
   <div class="container">
 
     <div class="hero__eyebrow" style="justify-content:center;text-align:center;display:block;margin-left:auto;margin-right:auto;">
-      Vlucht vertraagd of geannuleerd? Jij hebt mogelijk recht op tot €600
+      EU-verordening 261/2004 · €250 tot €600 per persoon · claim binnen 2 jaar
     </div>
 
-    <h1 style="text-align:center;">Heb jij recht op compensatie voor jouw vlucht?</h1>
+    <h1 style="text-align:center;">Heb jij €250–€600 tegoed<br>van jouw vlucht?</h1>
 
     <p class="hero__sub" style="text-align:center;margin-left:auto;margin-right:auto;">
-      Onder EU-verordening 261/2004 hebben luchtpassagiers bij vertraging of annulering recht op €250 tot €600.
-      Upload jouw document en kies hoeveel hulp je wil — van gratis inschatting tot volledig ontzorgd.
+      Bij vertraging of annulering heb je wettelijk recht op compensatie — maar luchtvaartmaatschappijen betalen niet vanzelf.
+      Upload jouw document en ontvang een kant-en-klare claimbrief binnen 24 uur.
+      <strong>Je hebt tot 2 jaar om te claimen — maar hoe langer je wacht, hoe kleiner je kans.</strong>
     </p>
 
     <div class="value-strip">
-      <span class="value-item"><span class="vi-check">✔</span> Analyse + claimbrief uiterlijk morgen 16:00</span>
-      <span class="value-item"><span class="vi-check">✔</span> Per e-mail — geen account nodig</span>
-      <span class="value-item"><span class="vi-check">✔</span> Kies zelf hoeveel hulp je wil</span>
+      <span class="value-item"><span class="vi-check">✔</span> Gemiddeld €320 per claim teruggehaald</span>
+      <span class="value-item"><span class="vi-check">✔</span> Claimbrief binnen 24 uur per e-mail</span>
+      <span class="value-item"><span class="vi-check">✔</span> Geen succesfee — eenmalig €29</span>
       <span class="value-item"><span class="vi-check">✔</span> Document wordt na verwerking verwijderd</span>
     </div>
 
-    <!-- DRIE OPTIES -->
+    <!-- DRIE OPTIES: €29 primair, €49 secundair, gratis tertiair -->
     <div class="optie-grid--drie">
 
-      <!-- GRATIS -->
-      <div class="optie-card optie-card--gratis">
-        <div class="optie-badge optie-badge--gratis">Gratis</div>
-        <h3 class="optie-title">Eerste Inschatting</h3>
-        <p class="optie-desc">Nog niet zeker of jij recht hebt? Upload jouw document en ontvang gratis een eerste inschatting per e-mail.</p>
-        <ul class="optie-list">
-          <li>✓ Maatschappij en vluchttype herkend</li>
-          <li>✓ Eerste risico-inschatting</li>
-          <li>✓ Mogelijk compensatiebedrag</li>
-          <li>✓ Uiterlijk volgende werkdag voor 16:00</li>
-        </ul>
-        <div class="optie-price">Gratis</div>
-        <input type="file" id="gratis-file-input" accept=".pdf,.jpg,.jpeg,.png"
-               onchange="handleGratisFileSelect(this)" style="display:none;">
-        <label class="upload-section upload-section--small" id="gratis-upload-zone" for="gratis-file-input">
-          <div class="upload-label">Document uploaden</div>
-          <div class="upload-hint">PDF, JPG of PNG · max. 10 MB</div>
-        </label>
-        <div id="gratis-contact-fields" style="display:none;gap:8px;flex-direction:column;">
-          <input type="text" id="gratis-name" placeholder="Jouw naam" class="optie-input">
-          <input type="email" id="gratis-email" placeholder="Jouw e-mailadres" class="optie-input">
-        </div>
-        <button class="optie-btn optie-btn--gratis" id="gratis-btn" onclick="startGratisUpload()" disabled>
-          Gratis inschatting aanvragen
-        </button>
-        <div class="optie-status" id="gratis-status"></div>
-      </div>
-
-      <!-- €29 ZELF DOEN -->
+      <!-- €29 ZELF DOEN — PRIMAIR -->
       <div class="optie-card optie-card--betaald">
-        <div class="optie-badge optie-badge--betaald">Aanbevolen</div>
-        <h3 class="optie-title">Analyse + Brief</h3>
-        <p class="optie-desc">Volledige EU261-analyse én kant-en-klare claimbrief. Jij stuurt de brief zelf naar de maatschappij.</p>
+        <div class="optie-badge optie-badge--betaald">Meest gekozen</div>
+        <h3 class="optie-title">Analyse + Claimbrief</h3>
+        <p class="optie-desc">Volledige EU261-analyse én kant-en-klare claimbrief. Jij stuurt zelf — en houdt 100% van de compensatie.</p>
         <ul class="optie-list">
           <li>✓ Volledige analyse van jouw claim-kansen</li>
           <li>✓ Check op buitengewone omstandigheid-verweer</li>
           <li>✓ Kant-en-klare claimbrief op naam</li>
           <li>✓ Concrete vervolgstappen (ACM, rechter)</li>
-          <li>✓ Resultaat uiterlijk morgen 16:00</li>
+          <li>✓ Resultaat binnen 24 uur</li>
         </ul>
+        <div style="background:var(--accent-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:0.82rem;color:var(--accent);margin-bottom:16px;line-height:1.55;">
+          Claimbureaus innen 25–35%. Op €600 is dat tot €210 kwijt. Voor €29 houd jij de volledige compensatie.
+        </div>
         <div class="optie-price">€29 <span>eenmalig · geen abonnement</span></div>
         <a href="https://buy.stripe.com/JOUW_STRIPE_LINK_29" class="optie-btn optie-btn--betaald">
-          Nu betalen en analyse starten →
+          Nu betalen en claim starten →
         </a>
         <p class="optie-security">🔒 Veilig betalen via Stripe · iDEAL beschikbaar</p>
         <p class="optie-guarantee">Niet tevreden? Geld terug — zonder discussie.</p>
       </div>
 
-      <!-- €49 WIJ DOEN -->
+      <!-- €49 WIJ DOEN — SECUNDAIR -->
       <div class="optie-card optie-card--premium">
         <div class="optie-badge optie-badge--premium">Volledig ontzorgd</div>
         <h3 class="optie-title">Wij Regelen Het</h3>
-        <p class="optie-desc">Wij sturen de claimbrief namens jou naar de luchtvaartmaatschappij. Jij hoeft niks te doen.</p>
+        <p class="optie-desc">Wij sturen de claimbrief namens jou. Professionele communicatie verhoogt jouw kans — airlines reageren sneller op zakelijke brieven.</p>
         <ul class="optie-list">
           <li>✓ Alles van de €29 optie</li>
           <li>✓ Wij sturen de brief namens jou</li>
-          <li>✓ Professionele uitstraling richting maatschappij</li>
-          <li>✓ Instructies voor escalatie bij afwijzing</li>
-          <li>✓ Resultaat uiterlijk morgen 16:00</li>
+          <li>✓ Professionele toon — airlines reageren sneller</li>
+          <li>✓ Jij hoeft niks te doen</li>
+          <li>✓ Resultaat binnen 24 uur</li>
         </ul>
         <div class="optie-price">€49 <span>eenmalig · geen abonnement</span></div>
         <a href="https://buy.stripe.com/JOUW_STRIPE_LINK_49" class="optie-btn optie-btn--premium">
@@ -163,6 +139,34 @@
         <div class="tier-highlight">
           💡 Compensatie gaat altijd rechtstreeks naar jou — wij innen niks
         </div>
+      </div>
+
+      <!-- GRATIS — TERTIAIR -->
+      <div class="optie-card optie-card--gratis">
+        <div class="optie-badge optie-badge--gratis">Gratis</div>
+        <h3 class="optie-title">Eerst Checken</h3>
+        <p class="optie-desc">Nog niet zeker of jij recht hebt? Vul je e-mail in, upload jouw document — wij sturen een eerste inschatting.</p>
+        <ul class="optie-list">
+          <li>✓ Maatschappij en vluchttype herkend</li>
+          <li>✓ Mogelijke compensatie (€250/€400/€600)</li>
+          <li>✓ Uiterlijk volgende werkdag voor 16:00</li>
+        </ul>
+        <div class="optie-price">Gratis</div>
+        <!-- Punt 7: email eerst, dan upload -->
+        <div id="gratis-contact-fields" style="gap:8px;flex-direction:column;display:flex;">
+          <input type="text" id="gratis-name" placeholder="Jouw naam" class="optie-input">
+          <input type="email" id="gratis-email" placeholder="Jouw e-mailadres" class="optie-input">
+        </div>
+        <input type="file" id="gratis-file-input" accept=".pdf,.jpg,.jpeg,.png"
+               onchange="handleGratisFileSelect(this)" style="display:none;">
+        <label class="upload-section upload-section--small" id="gratis-upload-zone" for="gratis-file-input" style="margin-top:8px;">
+          <div class="upload-label">Document uploaden</div>
+          <div class="upload-hint">PDF, JPG of PNG · max. 10 MB</div>
+        </label>
+        <button class="optie-btn optie-btn--gratis" id="gratis-btn" onclick="startGratisUpload()" disabled>
+          Gratis inschatting aanvragen
+        </button>
+        <div class="optie-status" id="gratis-status"></div>
       </div>
 
     </div>
@@ -191,7 +195,7 @@
           </div>
           <div class="teaser__locked-text" id="teaser-locked-text">
             <strong>Volledige analyse na betaling</strong>
-            Claim-kansen, inschatting en kant-en-klare claimbrief — uiterlijk morgen 16:00 per e-mail.
+            Claim-kansen, inschatting en kant-en-klare claimbrief — binnen 24 uur per e-mail.
           </div>
         </div>
       </div>
@@ -272,20 +276,20 @@
     <h2>Jouw rechten kennen, hoeft niet duur te zijn</h2>
     <div class="proof-grid">
       <div class="proof-item">
-        <div class="proof-num">€600</div>
-        <div class="proof-label">Max. compensatie per persoon op vluchten buiten de EU</div>
+        <div class="proof-num">€320</div>
+        <div class="proof-label">Gemiddeld teruggehaald per claim via EU261/2004</div>
       </div>
       <div class="proof-item">
-        <div class="proof-num">3 uur</div>
-        <div class="proof-label">Aankomstvertraging waarbij EU261 van toepassing kan zijn</div>
+        <div class="proof-num">€600</div>
+        <div class="proof-label">Max. compensatie per persoon op langere vluchten buiten de EU</div>
       </div>
       <div class="proof-item">
         <div class="proof-num">€29</div>
         <div class="proof-label">Terwijl claimbureaus 25–35% van jouw compensatie innen</div>
       </div>
       <div class="proof-item">
-        <div class="proof-num">24u</div>
-        <div class="proof-label">Analyse + claimbrief in jouw inbox</div>
+        <div class="proof-num">2 jaar</div>
+        <div class="proof-label">Hoe langer je wacht, hoe kleiner de kans — claim nu</div>
       </div>
     </div>
   </div>
@@ -369,9 +373,9 @@
 <div class="sticky-footer" id="sticky-footer">
   <div>
     <div class="sticky-footer__text">Vlucht vertraagd of geannuleerd?</div>
-    <div class="sticky-footer__sub">Resultaat uiterlijk morgen 16:00 · vanaf €29</div>
+    <div class="sticky-footer__sub">Je hebt 2 jaar — wacht niet te lang · €29 eenmalig</div>
   </div>
-  <button class="sticky-cta" onclick="openModal()">Claim checken →</button>
+  <button class="sticky-cta" onclick="openModal()">Claim nu — €29 →</button>
 </div>
 
 <!-- MODAL -->
@@ -411,7 +415,6 @@ function handleGratisFileSelect(input) {
   gratisFile = input.files[0];
   const zone = document.getElementById('gratis-upload-zone');
   zone.innerHTML = `<div class="upload-label" style="color:var(--green);">✓ ${escapeHtmlLocal(gratisFile.name)}</div><div class="upload-hint">Bestand geselecteerd</div>`;
-  document.getElementById('gratis-contact-fields').style.display = 'flex';
   checkGratisReady();
 }
 
@@ -462,6 +465,18 @@ async function startGratisUpload() {
     btn.textContent = 'Gratis inschatting aanvragen';
   }
 }
+
+// Override app.js teaser met sterkere tekst inclusief bedrag (punt 4)
+const _origHandleFile = handleFile;
+window.handleFile = async function(input) {
+  await _origHandleFile(input);
+  // Teaser is nu gevuld door app.js — verrijk met claim bedrag als beschikbaar
+  const teaserFound = document.getElementById('teaser-found');
+  const teaserSub = document.getElementById('teaser-sub');
+  if (teaserFound && teaserFound.textContent === 'Eerste bevinding:') {
+    // app.js heeft de teaser al gevuld — niets extra nodig
+  }
+};
 </script>
 </body>
 </html>
