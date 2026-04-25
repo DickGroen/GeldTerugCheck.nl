@@ -42,26 +42,36 @@ async function handleFile(input) {
     const claimAmount = data.claim_amount || null;
     const disruptionType = data.disruption_type || data.contract_type || null;
 
-    const riskLabel = { low: '🟡 Laag', medium: '🟠 Middel', high: '🟢 Hoog' }[risk] || risk;
+    // Punt 4: claim bedrag prominent bovenaan
+    if (claimAmount) {
+      teaserCompany.textContent = `Mogelijk €${claimAmount} compensatie gevonden`;
+    } else {
+      teaserCompany.textContent = airline || 'Document herkend';
+    }
+    teaserFound.textContent = airline ? `Vlucht bij ${airline} herkend:` : 'Eerste bevinding:';
 
-    teaserCompany.textContent = airline || 'Document herkend';
-    teaserFound.textContent = 'Eerste bevinding:';
-
-    let subText = 'Jouw vluchtdocument is geanalyseerd.';
-    if (claimAmount) subText += ` Mogelijk compensatiebedrag: €${claimAmount}.`;
-    if (disruptionType) subText += ` Type verstoring: ${disruptionType}.`;
-    subText += ' Kans op succes: ' + riskLabel + '.';
+    const riskMessages = {
+      high: '🟢 Goede kans — claim lijkt sterk. Vraag nu de volledige analyse aan.',
+      medium: '🟠 Mogelijk recht op compensatie. Een volledige check geeft zekerheid.',
+      low: '🟡 Kans is lager, maar een check kan verrassingen opleveren.'
+    };
+    const subText = riskMessages[risk] || 'Klik hieronder voor de volledige analyse.';
     teaserSub.textContent = subText;
 
     if (teaserLocked) {
+      const bedragTekst = claimAmount ? `€${claimAmount} compensatie` : 'jouw compensatie';
       teaserLocked.innerHTML = `<strong>Volledige analyse na betaling</strong>
-        Claim-kansen, inschatting en kant-en-klare claimbrief — uiterlijk morgen 16:00 per e-mail.`;
+        Wij controleren alles en sturen een kant-en-klare claimbrief voor ${bedragTekst} — binnen 24 uur.`;
     }
 
     if (modalCopy) {
-      modalCopy.textContent = airline
-        ? `We hebben jouw vlucht bij ${airline} herkend. De volledige beoordeling volgt na betaling.`
-        : 'We hebben eerste aanwijzingen herkend. De volledige beoordeling volgt na betaling.';
+      if (claimAmount && airline) {
+        modalCopy.textContent = `We hebben een mogelijke compensatie van €${claimAmount} gevonden voor jouw vlucht bij ${airline}. Volledige beoordeling volgt na betaling.`;
+      } else if (airline) {
+        modalCopy.textContent = `We hebben jouw vlucht bij ${airline} herkend. De volledige beoordeling volgt na betaling.`;
+      } else {
+        modalCopy.textContent = 'We hebben eerste aanwijzingen herkend. De volledige beoordeling volgt na betaling.';
+      }
     }
 
   } catch (err) {
